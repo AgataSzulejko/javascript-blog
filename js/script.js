@@ -33,13 +33,6 @@
   targetArticle.classList.add('active');
 }
 
-const links = document.querySelectorAll('.titles a');
-
-for(let link of links){
-  link.addEventListener('click', titleClickHandler);
-}
-
-
 // Part 6.4 - Dynamic Title links
 
 const optArticleSelector = '.post',
@@ -49,7 +42,6 @@ const optArticleSelector = '.post',
 function generateTitleLinks(){
 
   /* remove contents of titleList */
-
 const titleList = document.querySelector(optTitleListSelector);
   titleList.innerHTML = '';
 
@@ -82,7 +74,13 @@ for (let article of articles){
 
 titleList.innerHTML = html;
 
+//bug fix according to exercise description
+const links = document.querySelectorAll('.titles a');
+console.log(links);
 
+for(let link of links){
+  link.addEventListener('click', titleClickHandler);
+  }
 }
 
 generateTitleLinks();
