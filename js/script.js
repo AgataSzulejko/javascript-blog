@@ -109,10 +109,10 @@ function generateTags(){
     html = html + linkTagHTML;
 
     /* [NEW] check if this link is NOT already in allTags */
-  if(!allTags[tag]) {
-  /* [NEW] add tag to allTags object */
-    allTags[tag] = 1;
-  }
+    if(!allTags[tag]) {
+      /* [NEW] add tag to allTags object */
+      allTags[tag] = 1;
+    }
 
    /* END LOOP: for each tag */
      }
