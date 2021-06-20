@@ -83,6 +83,9 @@ generateTitleLinks();
 // Part 7.2 Dynamic Tags
 
 function generateTags(){
+  /* [NEW] create a new variable allTags with an empty object */
+  let allTags = {};
+
   /* find all articles */
   const articles = document.querySelectorAll(optArticleSelector);
 
@@ -104,12 +107,25 @@ function generateTags(){
     const linkTagHTML = '<li><a href="#tag-'+ tag +'">'+ tag +'</a></li>';
     /* add generated code to html variable */
     html = html + linkTagHTML;
+
+    /* [NEW] check if this link is NOT already in allTags */
+  if(!allTags[tag]) {
+  /* [NEW] add tag to allTags object */
+    allTags[tag] = 1;
+  }
+
    /* END LOOP: for each tag */
      }
    /* insert HTML of all the links into the tags wrapper */
      tagsWrapper.innerHTML = html;
   /* END LOOP: for every article: */
   }
+
+  /* [NEW] find list of tags in right column */
+  const tagList = document.querySelector('.tags');
+
+  /* [NEW] add html from allTags to tagList */
+  tagList.innerHTML = allTags.join(' ');
 }
 
 generateTags();
@@ -222,4 +238,13 @@ function addClickListenersToAuthors() {
  };
 
    addClickListenersToAuthors();
+
+
+// Part 7.3 Tag cloud
+
+
+
+
+
+
 }
