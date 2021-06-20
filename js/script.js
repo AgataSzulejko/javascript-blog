@@ -70,14 +70,12 @@ for (let article of articles){
 
   /* insert link into html variable */
       html = html + linkHTML;
-      console.log(html);
   }
 
 titleList.innerHTML = html;
 
 //bug fix according to exercise description
 const links = document.querySelectorAll('.titles a');
-console.log(links);
 
 for(let link of links){
   link.addEventListener('click', titleClickHandler);
@@ -102,12 +100,12 @@ function generateTags(){
   const articleTags = article.getAttribute('data-tags');
     /* split tags into array */
     const articleTagsArray = articleTags.split(' ');
-    console.log(articleTagsArray);
+
 
     /* START LOOP: for each tag */
     for(let tag of articleTagsArray){
       /* generate HTML of the link */
-    const linkTagHTML = '  <i><a href="#tag-"+ tag>tag</a></li>';
+    const linkTagHTML = '<li><a href="#tag-'+ tag +'">'+ tag +'</a></li>';
     /* add generated code to html variable */
     html = html + linkTagHTML;
    /* END LOOP: for each tag */
@@ -119,7 +117,6 @@ function generateTags(){
 }
 
 generateTags();
-
 
 function tagClickHandler(event){
   /* prevent default action for this event */
@@ -158,13 +155,16 @@ function tagClickHandler(event){
 }
 
 function addClickListenersToTags(){
+
   /* find all links to tags */
+  const tagLinks =  document.querySelectorAll('a[href^="#tag-"]');
 
   /* START LOOP: for each link */
-
+  for(let linkTag of tagLinks){
     /* add tagClickHandler as event listener for that link */
-
-  /* END LOOP: for each link */
+    linkTag.addEventListener('click', tagClickHandler);
+    /* END LOOP: for each link */
+    }
 }
 
 addClickListenersToTags();
