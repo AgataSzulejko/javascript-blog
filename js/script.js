@@ -9,10 +9,15 @@ const titleClickHandler = function(event){
     activeLink.classList.remove('active');
   }
 
-
   /* add class 'active' to the clicked link */
 
   /* remove class 'active' from all articles */
+
+  const activeArticles = document.querySelectorAll('.posts article.active');
+
+ for(let activeArticle of activeArticles){
+   activeArticle.classList.remove('active');
+ }
 
   /* get 'href' attribute from the clicked link */
 
