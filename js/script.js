@@ -318,7 +318,6 @@ function addClickListenersToAuthors() {
 
    addClickListenersToAuthors();
 
-
 function setDefaultArticle(targetArticle){
    const activeArticles = document.querySelectorAll('.post.active');
    for(let activeArticle of activeArticles){
