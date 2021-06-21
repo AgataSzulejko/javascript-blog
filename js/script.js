@@ -288,4 +288,12 @@ function addClickListenersToAuthors() {
 
    addClickListenersToAuthors();
 
+
+// Part 7.3 Tag cloud
+
+
+
+
+
+
 }
