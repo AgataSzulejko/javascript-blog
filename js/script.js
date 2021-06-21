@@ -296,6 +296,14 @@ if (activeAuthorLinks) {
   }
 
   generateTitleLinks('[data-author="' + author + '"]');
+
+  // Show first available article of selected author after click.
+  const targetArticle = document.querySelector('[data-author="' + author + '"]');
+  const activeArticles = document.querySelectorAll('.post.active');
+  for(let activeArticle of activeArticles){
+    activeArticle.classList.remove('active');
+  }
+  targetArticle.classList.add('active');
 };
 
 
