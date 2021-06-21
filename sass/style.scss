@@ -116,6 +116,15 @@ ul.tags {
     column-gap:5px;
 }
 
+ul.authors span{
+font-size:12px;
+}
+
+ul.authors span span{
+font-weight:bold;
+color:red;
+}
+
 .tag-size-1 {
   font-size: 100%;
   color:blue;

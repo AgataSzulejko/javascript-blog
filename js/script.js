@@ -239,6 +239,7 @@ function generateAuthors() {
   let allAuthors = {};
 
   const articles = document.querySelectorAll(optArticleSelector);
+
   for (let article of articles) {
 
     const authorWrapper = article.querySelector(optArticleAuthorSelector);
@@ -247,28 +248,23 @@ function generateAuthors() {
 
     const authorLinkHTML = '<a href="#author-' + articleAuthor + '">' + articleAuthor + '</a>';
 
+
     if (!allAuthors[articleAuthor]) {
          allAuthors[articleAuthor] = 1
        }
        else {
          allAuthors[articleAuthor]++
        }
-       console.log('allAuthors: ', allAuthors);
-
-
     authorWrapper.innerHTML = authorLinkHTML;
-
   }
 
   const authorList = document.querySelector('.authors');
-  console.log('authorList: ', authorList);
 
   let allAuthorsHTML = '';
 
   for (let author in allAuthors) {
-
-    allAuthorsHTML += '<li><a href="#author-' + author + '"><span>' + author + '</a>' + '</span></li>';
-    console.log('allAuthorsHTML: ', JSON.stringify(allAuthorsHTML));
+    const countArticles = document.querySelectorAll('[data-author="' + author + '"]').length;
+    allAuthorsHTML += '<li><a href="#author-' + author + '">' + author + '</a><span> | articles(<span>' + (countArticles) + '</span>)</span></li>';
   }
     authorList.innerHTML = allAuthorsHTML;
 }
@@ -285,11 +281,13 @@ function authorClickHandler(event){
 
   const author = href.replace('#author-','');
 
-  const activeAuthorLinks = document.querySelectorAll('a.active[href^="#article-"]');
+  const activeAuthorLinks = document.querySelectorAll('a.active[href^="#author-"]');
 
+if (activeAuthorLinks) {
   for (let activeAuthor of activeAuthorLinks) {
     activeAuthor.classList.remove('active');
   }
+}
 
   const authorLinks = document.querySelectorAll('a[href="' + href + '"]');
 
@@ -312,8 +310,6 @@ function addClickListenersToAuthors() {
 
    addClickListenersToAuthors();
 
-
-// Part 7.3 Tag cloud
 
 
 
