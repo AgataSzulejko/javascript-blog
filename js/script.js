@@ -38,6 +38,7 @@ const optArticleSelector = '.post',
   optArticleAuthorSelector = '.post-author';
   optCloudClassCount = 5;
   optCloudClassPrefix = 'tag-size-';
+  optAuthorsListSelector = 'authors.list';
 
 function generateTitleLinks(customSelector = ''){
 
@@ -235,6 +236,8 @@ addClickListenersToTags();
 
 function generateAuthors() {
 
+  let allAuthors = {};
+
   const articles = document.querySelectorAll(optArticleSelector);
   for (let article of articles) {
 
@@ -261,7 +264,7 @@ function authorClickHandler(event){
 
   const author = href.replace('#author-','');
 
-  const activeAuthorLinks = document.querySelectorAll('a[href^="#author-"]');
+  const activeAuthorLinks = document.querySelectorAll('a.active[href^="#author-"]');
 
   for (let activeAuthor of activeAuthorLinks) {
     activeAuthor.classList.remove('active');
