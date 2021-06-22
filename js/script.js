@@ -117,7 +117,7 @@
         };
 
         for (let tag in tags) {
-            console.log(tag + ' is used ' + tags[tag] + ' times');
+
             params.max = Math.max(tags[tag], params.max);
             params.min = Math.min(tags[tag], params.min);
         }
@@ -187,7 +187,6 @@
         const tagList = document.querySelector('.tags');
 
         const tagsParams = calculateTagsParams(allTags);
-        console.log('tagsParams:', tagsParams)
 
         /* [NEW] create variable for all links HTML code */
         const allTagsData = {
