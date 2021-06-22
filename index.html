@@ -198,12 +198,12 @@
       </script>
       <script id="template-tagCloud-link" type="text/x-handlebars-template">
         {{#each tags}}
-        <li><a class="{{className}}" href="#tag-{{tag}}">{{ tag }}</a></li>
+        <li><a class="{{className}}" href="#tag-{{tag}}">{{ tag }}</a><span>({{count}})</span></li>
         {{/each}}
       </script>
       <script id="template-authorsList-link" type="text/x-handlebars-template">
         {{#each authors}}
-        <li><a href="#author-{{author}}">{{ author }}</a><span> | articles(<span>{{countArticles}})</span></span></li>
+        <li><a href="#author-{{author}}">{{ author }}</a><span> | articles(<span>{{countArticles}}</span>)</span></li>
         {{/each}}
       </script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/4.1.0/handlebars.min.js"></script>

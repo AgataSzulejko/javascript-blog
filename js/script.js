@@ -8,6 +8,7 @@
     }
 
 
+
     const titleClickHandler = function(event) {
         event.preventDefault();
         const clickedElement = this;
@@ -41,15 +42,15 @@
     // Part 6.4 - Dynamic Title links
 
     const optArticleSelector = '.post',
-        optTitleSelector = '.post-title',
-        optTitleListSelector = '.titles';
-    optArticleTagsSelector = '.post-tags .list';
-    optArticleAuthorSelector = '.post-author';
-    optCloudClassCount = 5;
-    optCloudClassPrefix = 'tag-size-';
-    optAuthorsListSelector = 'authors.list';
+          optTitleSelector = '.post-title',
+          optTitleListSelector = '.titles';
+          optArticleTagsSelector = '.post-tags .list';
+          optArticleAuthorSelector = '.post-author';
+          optCloudClassCount = 5;
+          optCloudClassPrefix = 'tag-size-';
+          optAuthorsListSelector = 'authors.list';
 
-    function generateTitleLinks(customSelector = '') {
+    const generateTitleLinks = function(customSelector = '') {
 
         /* remove contents of titleList */
         const titleList = document.querySelector(optTitleListSelector);
@@ -78,7 +79,6 @@
             const linkHTML = templates.articleLink(linkHTMLData);
             //const linkHTML = '<li><a href="#' + articleId + '"><span>' + articleTitle + '</span></a></li>';
 
-
             /* insert link into titleList */
             //titleList.innerHTML = titleList.innerHTML + linkHTML;
             //titleList.insertAdjacentHTML('beforeend', linkHTML);
@@ -101,7 +101,15 @@
 
     // Part 7.2 Dynamic Tags
 
-    function calculateTagsParams(tags) {
+    const setDefaultArticle = function(targetArticle) {
+        const activeArticles = document.querySelectorAll('.post.active');
+        for (let activeArticle of activeArticles) {
+            activeArticle.classList.remove('active');
+        }
+        targetArticle.classList.add('active');
+    }
+
+    const calculateTagsParams = function(tags) {
 
         const params = {
             max: 0,
@@ -117,7 +125,7 @@
         return params;
     }
 
-    function calculateTagClass(count, params) {
+    const calculateTagClass = function(count, params) {
 
         const normalizedCount = count - params.min;
         const normalizedMax = params.max - params.min;
@@ -128,7 +136,7 @@
         return optCloudClassPrefix + classNumber;
     }
 
-    function generateTags() {
+    const generateTags =  function() {
         /* [NEW] create a new variable allTags with an empty object */
         let allTags = {};
 
@@ -213,7 +221,7 @@
 
     generateTags();
 
-    function tagClickHandler(event) {
+    const tagClickHandler = function(event) {
         /* prevent default action for this event */
         event.preventDefault();
 
@@ -253,7 +261,7 @@
         setDefaultArticle(targetArticle);
     }
 
-    function addClickListenersToTags() {
+    const addClickListenersToTags = function() {
 
         /* find all links to tags */
         const tagLinks = document.querySelectorAll('a[href^="#tag-"]');
@@ -271,7 +279,7 @@
 
     // Add Author
 
-    function generateAuthors() {
+    const generateAuthors = function() {
 
         let allAuthors = {};
 
@@ -322,7 +330,7 @@
     generateAuthors();
 
 
-    function authorClickHandler(event) {
+    const authorClickHandler = function(event) {
 
         event.preventDefault();
         const clickedElement = this;
@@ -353,7 +361,7 @@
     };
 
 
-    function addClickListenersToAuthors() {
+    const addClickListenersToAuthors = function() {
         let authorLinks = document.querySelectorAll('a[href^="#author-"]');
 
         for (let author of authorLinks) {
@@ -363,12 +371,4 @@
     };
 
     addClickListenersToAuthors();
-
-    function setDefaultArticle(targetArticle) {
-        const activeArticles = document.querySelectorAll('.post.active');
-        for (let activeArticle of activeArticles) {
-            activeArticle.classList.remove('active');
-        }
-        targetArticle.classList.add('active');
-    }
 }
